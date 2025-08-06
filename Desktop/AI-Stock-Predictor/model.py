@@ -1,28 +1,54 @@
+import matplotlib
+matplotlib.use('Agg')  # Use non-interactive backend that doesn't require a GUI
+import matplotlib.pyplot as plt
 import yfinance as yf
 import numpy as np
+import pandas as pd
 from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
+import io
+import base64
 
-def predict_stock(ticker):
-    try:
-        df = yf.download(ticker, period="1y")
-        df = df[["Close"]]
-        df["Target"] = df["Close"].shift(-1)
-        df.dropna(inplace=True)
+def predict_next_close(ticker):
+    df = yf.download(ticker, period="6mo", interval="1d")
+    
+    if df.empty or 'Close' not in df.columns:
+        raise ValueError("Invalid ticker or no data available.")
 
-        X = np.array(df[["Close"]])
-        y = np.array(df["Target"])
+    df = df.dropna()
+    df['Day'] = np.arange(len(df)).reshape(-1, 1)
 
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=False)
+    X = df['Day'].values.reshape(-1, 1)
+    y = df['Close'].values.reshape(-1, 1)
 
-        model = LinearRegression()
-        model.fit(X_train, y_train)
+    model = LinearRegression()
+    model.fit(X, y)
 
-        latest_close = X[-1]
-        latest_close = latest_close.reshape(1, -1)  # Fix here: reshape to 2D (1, 1)
+    next_day = np.array([[len(df)]])
+    predicted = model.predict(next_day)
 
-        prediction = model.predict(latest_close)[0]
+    # Convert prediction to scalar
+    predicted_scalar = float(predicted[0][0])
+    return round(predicted_scalar, 2)
 
-        return f"Predicted Next Close for {ticker.upper()}: ${prediction:.2f}"
-    except Exception as e:
-        return f"Error: {e}"
+
+def get_plot_html(ticker):
+    df = yf.download(ticker, period="6mo", interval="1d")
+    
+    if df.empty or 'Close' not in df.columns:
+        raise ValueError("Invalid ticker or no data available.")
+
+    plt.figure(figsize=(10, 5))
+    plt.plot(df['Close'], label='Close Price')
+    plt.title(f"{ticker.upper()} Closing Prices (Last 6 Months)")
+    plt.xlabel('Date')
+    plt.ylabel('Price (USD)')
+    plt.legend()
+
+    buf = io.BytesIO()
+    plt.savefig(buf, format='png')
+    buf.seek(0)
+    image_base64 = base64.b64encode(buf.read()).decode('utf-8')
+    plt.close()
+
+    return f"data:image/png;base64,{image_base64}"
