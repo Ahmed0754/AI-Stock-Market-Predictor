@@ -67,7 +67,7 @@ Edit
 
 ### 1. Clone the repo
 
-```bash
+
 git clone https://github.com/your-username/AI-Stock-Market-Predictor.git
 cd AI-Stock-Market-Predictor
 2. Create a virtual environment
