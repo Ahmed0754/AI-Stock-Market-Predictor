@@ -133,4 +133,3 @@ Computer Science @ SUNY New Paltz
 GitHub: Ahmed0754
 
 
-Let me know if you’d like this adapted into a real `README.md` file or need help with adding a demo GIF or screenshots!
