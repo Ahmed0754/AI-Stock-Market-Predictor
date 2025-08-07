@@ -1,6 +1,6 @@
 # 📈 AI Stock Market Predictor
 
-A full-stack AI-powered stock market forecasting application that uses LSTM (Long Short-Term Memory) neural networks to predict future stock prices. Built with **Flask**, **Keras**, and **Yahoo Finance API**, the app allows users to enter any stock ticker symbol and visualize past trends alongside future predictions. Includes a sleek, responsive UI with **Dark Mode** toggle.
+A full-stack AI-powered stock market forecasting application that uses LSTM (Long Short-Term Memory) neural networks to predict future stock prices. Built with **Flask**, **Keras**, and **Yahoo Finance API**, the app allows users to enter any stock ticker symbol and visualize past trends alongside future predictions. Includes a sleek, responsive UI.
 
 ---
 
@@ -10,7 +10,7 @@ A full-stack AI-powered stock market forecasting application that uses LSTM (Lon
 - 📊 Fetches **5 years** of historical stock data via Yahoo Finance
 - 🤖 Uses **LSTM neural networks** to forecast future prices
 - 📈 Plots **interactive charts** of actual vs predicted stock trends
-- 🌙 **Dark Mode / Light Mode** toggle
+- 🌙 **Dark Mode
 - 🧠 Deep learning powered with **Keras + TensorFlow**
 - 🌐 Lightweight **Flask web app**
 
