@@ -27,13 +27,6 @@ A full-stack AI-powered stock market forecasting application that uses LSTM (Lon
 
 ---
 
-## 📸 Demo
-
-![Demo Screenshot](demo.gif)  
-*(Replace with your own image or GIF)*
-
----
-
 ## 🛠️ Tech Stack
 
 | Layer         | Technologies                  |
