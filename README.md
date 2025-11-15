@@ -57,10 +57,6 @@ A full-stack AI-powered stock market forecasting application that uses LSTM (Lon
 ├── requirements.txt # Python dependencies
 ├── README.md # This file
 
-yaml
-Copy
-Edit
-
 ---
 
 ## ✅ Getting Started
@@ -78,21 +74,15 @@ python3 -m venv venv
 source venv/bin/activate   # On Windows: venv\Scripts\activate
 3. Install dependencies
 bash
-Copy
-Edit
 pip install -r requirements.txt
 4. Run the app
 bash
-Copy
-Edit
 python app.py
 Then open your browser and go to:
 http://127.0.0.1:5000
 
 📦 Dependencies
 nginx
-Copy
-Edit
 Flask
 tensorflow
 pandas
@@ -104,8 +94,7 @@ plotly
 Install all with:
 
 bash
-Copy
-Edit
+
 pip install -r requirements.txt
 🧪 Example Tickers to Try
 AAPL – Apple Inc.
